@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bulma</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      background-color: sienna;
+    }
+    #login-form {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+  </style>
+  <script>
+    function start_progress() {
+      const pasek = document.getElementById('progress-bar')
+
+      pasek.setAttribute('value', 0)
+
+      const odliczanie = setInterval( () => {
+        let { value } = pasek
+        value += 1
+        pasek.setAttribute('value', value)
+      }, 100)
+    }
+    function zmien_progress(operator) {
+      const pasek = document.getElementById('progress-bar')
+
+      let { value } = pasek
+      let krok = 1
+       
+      switch(operator) {
+        case "+":
+          value = value + krok
+          break
+        case "-":
+          value -= krok
+          break
+      }
+      pasek.setAttribute('value', value)
+    }
+    
+  </script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <i class="fa-brands fa-discord"></i>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Strona główna
+        </a>
+        <a class="navbar-item">
+          Kariera
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Kontakt
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              NYSA 4
+            </a>
+            <a class="navbar-item">
+              WRO 2
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a href="login" class="button is-success">Zaloguj</a>
+            <a href="regis" class="button is-danger">Zarejestruj</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="columns">
+    <div id="login-form" class="column is-4 is-offset-one-third box">
+
+      <form>
+
+        <div class="field">
+          <label class="label">Nazwa użytkownika</label>
+          <div class="control has-icons-left">
+            <span class="icon is-small is-left">
+              <i class="fa-solid fa-user"></i>
+            </span>
+            <input class="input" type="text">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Hasło</label>
+          <div class="control has-icons-left">
+            <span class="icon is-small is-left">
+              <i class="fa-solid fa-lock"></i>
+            </span>
+            <input class="input is-danger" type="password">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <input type="submit" value="Zaloguj" class="input button is-success">
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  <div class="columns box is-multiline">
+    <div class="column is-12">
+      <progress id="progress-bar" class="progress is-info" value="50" max="100"></progress>
+    </div>
+    <div class="column is-2">
+      <button class="button is-info input" onclick="zmien_progress('+')">Zwiększ</button>
+    </div>
+    <div class="column is-2">
+      <button class="button is-info input" onclick="zmien_progress('-')">Zmniejsz</button>
+    </div>
+    <div class="column is-2">
+      <button class="button is-info input" onclick="start_progress()">Start</button>
+    </div>
+  </div>
+</body>
+</html>
